@@ -16,7 +16,7 @@ node {
     //}
 
 
-	  post {
+	  //post {
       	success {
               bat 'echo Success'
               emailext (
@@ -50,6 +50,6 @@ node {
 	  			attachLog: false
 	  		  )
       	}
-      }
+      //}
 }
 
