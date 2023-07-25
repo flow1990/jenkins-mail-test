@@ -23,7 +23,7 @@ pipeline {
 
 	post {
     	success {
-            bat 'echo Success'
+            sh 'echo Success'
             emailext (
 				subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 				body: """<p>SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -35,7 +35,7 @@ pipeline {
     	}
 
     	failure {
-            bat 'echo Failed'
+            sh 'echo Failed'
             emailext (
 				subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 				body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -46,7 +46,7 @@ pipeline {
     	}
 
     	always {
-            bat 'echo Done'
+            sh 'echo Done'
             emailext (
 				subject: "DONE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 				body: """<p>DONE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
