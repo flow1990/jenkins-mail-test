@@ -5,7 +5,9 @@ pipeline {
 
     stages {
       stage('checkout') {
+        steps {
           checkout scm
+        }
       }
   
       //stage('OWASP Dependency-Check Vulnerabilities') {
@@ -31,7 +33,7 @@ pipeline {
 				attachLog: true
 			  )
     	}
-        
+
     	failure {
             bat 'echo Failed'
             emailext (
