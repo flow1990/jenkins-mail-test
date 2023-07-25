@@ -2,9 +2,7 @@
 
 node {
     stage('checkout') {
-        steps {
-            checkout scm
-        }
+        checkout scm
     }
 
     //stage('OWASP Dependency-Check Vulnerabilities') {
