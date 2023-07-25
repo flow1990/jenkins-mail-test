@@ -19,6 +19,7 @@ pipeline {
               --prettyPrint''', odcInstallation: 'OWASPDepCheck'
           
           dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+          sh 'cp ./dependency-check-report.xml var/www/192.168.210.119'
         }
       }
     }
@@ -30,7 +31,7 @@ pipeline {
 				subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 				body: """<p>SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
 					<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT; for more information.
-          The OWASP Dependency Check can be found here XXX</p>""",
+          <a href='${env.BUILD_URL}/dependency-check-report.xml'>OWASP Dependency Check</a></p>""",
 				to: "f.walliser@quality-miners.de",
 				attachLog: true
 			  )
