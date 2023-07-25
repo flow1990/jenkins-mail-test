@@ -19,7 +19,6 @@ pipeline {
               --prettyPrint''', odcInstallation: 'OWASPDepCheck'
           
           dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-          sh 'cp ./dependency-check-report.xml var/www/192.168.210.119'
         }
       }
     }
