@@ -2,20 +2,23 @@
 
 node {
     stage('checkout') {
-        checkout scm
+        steps {
+            checkout scm
+        }
     }
 
     stage('OWASP Dependency-Check Vulnerabilities') {
-      steps {
-        dependencyCheck additionalArguments: ''' 
-                    -o './'
-                    -s './'
-                    -f 'ALL' 
-                    --prettyPrint''', odcInstallation: 'OWASPDepCheck'
-        
-        dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-      }
+        steps {
+            dependencyCheck additionalArguments: ''' 
+                -o './'
+                -s './'
+                -f 'ALL' 
+                --prettyPrint''', odcInstallation: 'OWASPDepCheck'
+            
+            dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+        }
     }
+
 
 	  post {
       	success {
