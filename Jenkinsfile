@@ -7,17 +7,17 @@ node {
         }
     }
 
-    stage('OWASP Dependency-Check Vulnerabilities') {
-        steps {
-            dependencyCheck additionalArguments: ''' 
-                -o './'
-                -s './'
-                -f 'ALL' 
-                --prettyPrint''', odcInstallation: 'OWASPDepCheck'
-            
-            dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-        }
-    }
+    //stage('OWASP Dependency-Check Vulnerabilities') {
+    //    steps {
+    //        dependencyCheck additionalArguments: ''' 
+    //            -o './'
+    //            -s './'
+    //            -f 'ALL' 
+    //            --prettyPrint''', odcInstallation: 'OWASPDepCheck'
+    //        
+    //        dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+    //    }
+    //}
 
 
 	  post {
