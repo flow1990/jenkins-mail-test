@@ -33,6 +33,7 @@ pipeline {
           <a href='${env.BUILD_URL}/dependency-check-report.xml'>OWASP Dependency Check</a></p>""",
 				to: "f.walliser@quality-miners.de",
 				attachLog: true
+                attachments: 'dependency-check-report.xml'
 			  )
     	}
 
@@ -44,6 +45,7 @@ pipeline {
 					<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT; for more information</p>""",
 				to: "f.walliser@quality-miners.de",
 				attachLog: true
+                attachments: 'dependency-check-report.xml'
 			  )
     	}
 
