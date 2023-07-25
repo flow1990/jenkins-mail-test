@@ -1,19 +1,22 @@
 #!/usr/bin/env groovy
 
 node {
-    stage('checkout') {
-        checkout scm
+    stages {
+      stage('checkout') {
+          checkout scm
+      }
+  
+      //stage('OWASP Dependency-Check Vulnerabilities') {
+      //    dependencyCheck additionalArguments: ''' 
+      //        -o './'
+      //        -s './'
+      //        -f 'ALL' 
+      //        --prettyPrint''', odcInstallation: 'OWASPDepCheck'
+      //    
+      //    dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+      //}  
     }
 
-    //stage('OWASP Dependency-Check Vulnerabilities') {
-    //    dependencyCheck additionalArguments: ''' 
-    //        -o './'
-    //        -s './'
-    //        -f 'ALL' 
-    //        --prettyPrint''', odcInstallation: 'OWASPDepCheck'
-    //    
-    //    dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-    //}
 
 
 	  post {
