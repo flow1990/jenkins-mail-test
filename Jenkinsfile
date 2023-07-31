@@ -18,7 +18,7 @@ pipeline {
               -f 'ALL' 
               --prettyPrint''', odcInstallation: 'OWASPDepCheck'
           
-          dependencyCheckPublisher pattern: 'qmcloud-dependency-check-report.xml'
+          dependencyCheckPublisher pattern: 'dependency-check-report.xml'
         }
       }
     }
@@ -32,7 +32,7 @@ pipeline {
 			          <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT; for more information.""",
 				  to: "f.walliser@quality-miners.de",
 				  attachLog: true,
-          attachmentsPattern: 'qmcloud-dependency-check-report.xml'
+          attachmentsPattern: 'dependency-check-report.xml'
 			  )
     	}
 
@@ -44,7 +44,7 @@ pipeline {
 				  	    <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT; for more information</p>""",
 				  to: "f.walliser@quality-miners.de",
 				  attachLog: true,
-          attachmentsPattern: 'qmcloud-dependency-check-report.xml'
+          attachmentsPattern: 'dependency-check-report.xml'
 			  )
     	}
     }
