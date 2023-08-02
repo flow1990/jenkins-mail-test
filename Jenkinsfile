@@ -40,6 +40,7 @@ pipeline {
         emailext (
 		      subject: "Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 		      body: """Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL} for more information.
+          Compodoc-PID: ${compodocProcess}
           Directory: ${PWD}/workspace/${env.JOB_NAME}/""",
 		      to: "f.walliser@quality-miners.de",
 		      attachLog: true,
