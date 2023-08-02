@@ -15,7 +15,10 @@ pipeline {
           sh 'sudo npm install -g @compodoc/compodoc'
           sh 'touch tsconfig.doc.json'
           //sh 'compodoc -p tsconfig.doc.json -s -r 8888'
-          sh 'compodoc -p tsconfig.doc.json'
+          sh 'sudo nohup compodoc -p tsconfig.doc.json &'
+          script {
+            compodocProcess = sh(script: 'sudo nohup compodoc -p tsconfig.doc.json -s -r 8888 &', returnStdout: true).trim()
+          }
         }
       }
   
