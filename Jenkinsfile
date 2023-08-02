@@ -13,6 +13,7 @@ pipeline {
       stage('create compodoc') {
         steps {
           sh 'sudo npm install -g @compodoc/compodoc'
+          sh 'touch tsconfig.json'
           sh 'compodoc'
         }
       }
