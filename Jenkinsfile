@@ -12,7 +12,7 @@ pipeline {
 
       stage('create compodoc') {
         steps {
-          sh 'npm install -g @compodoc/compodoc'
+          sh 'sudo npm install -g @compodoc/compodoc'
           sh 'touch tsconfig.doc.json'
           sh 'compodoc -p tsconfig.doc.json -s'
         }
@@ -32,26 +32,14 @@ pipeline {
     }
 
 	post {
-    	success {
-        sh 'echo Success'
+    	always {
+        sh 'echo dependency-check done'
         emailext (
-				  subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-				  body: """SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-			          <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT; for more information.""",
-				  to: "f.walliser@quality-miners.de",
-				  attachLog: true,
-          attachmentsPattern: 'dependency-check-report.xml, dependency-check-report.xml, dependency-check-report.html, dependency-check-report.json, dependency-check-report.csv, dependency-check-report.sarif, dependency-check-jenkins.html, dependency-check-junit.xml'
-			  )
-    	}
-
-    	failure {
-        sh 'echo Failed'
-        emailext (
-				  subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-				  body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-				  	    <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT; for more information</p>""",
-				  to: "f.walliser@quality-miners.de",
-				  attachLog: true,
+		  subject: "Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+		  body: """Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+		      Check console output at ${env.BUILD_URL} for more information.""",
+		  to: "f.walliser@quality-miners.de, t.trebes@quality-miners.de, aleksandar.toljic@synsoft.com",
+		  attachLog: true,
           attachmentsPattern: 'dependency-check-report.xml, dependency-check-report.xml, dependency-check-report.html, dependency-check-report.json, dependency-check-report.csv, dependency-check-report.sarif, dependency-check-jenkins.html, dependency-check-junit.xml'
 			  )
     	}
