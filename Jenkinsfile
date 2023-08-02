@@ -46,7 +46,7 @@ pipeline {
         emailext (
 		      subject: "Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 		      body: """Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL} for more information.""",
-		      to: "f.walliser@quality-miners.de, t.trebes@quality-miners.de, aleksandar.toljic@synsoft.com",
+		      to: "f.walliser@quality-miners.de",
 		      attachLog: true,
           attachmentsPattern: 'dependency-check-report.xml, dependency-check-report.xml, dependency-check-report.html, dependency-check-report.json, dependency-check-report.csv, dependency-check-report.sarif, dependency-check-jenkins.html, dependency-check-junit.xml'
 			  )
