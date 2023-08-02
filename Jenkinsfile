@@ -34,7 +34,7 @@ pipeline {
           steps {
               script {
                   // Nehmen Sie an, dass Ihre Compodoc-Dateien im Verzeichnis 'compodoc' liegen
-                  sh "python3 -m http.server 8000 --directory documentation &"
+                  sh "python3 -m http.server 4242 --directory documentation &"
               }
           }
       }
