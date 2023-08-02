@@ -9,6 +9,14 @@ pipeline {
           checkout scm
         }
       }
+
+      stage('create compodoc') {
+        steps {
+          sh 'npm install -g @compodoc/compodoc'
+          sh 'touch tsconfig.doc.json'
+          sh 'compodoc -p tsconfig.doc.json -s'
+        }
+      }
   
       stage('OWASP Dependency-Check Vulnerabilities') {
         steps {
