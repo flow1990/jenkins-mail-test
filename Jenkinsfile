@@ -38,7 +38,7 @@ pipeline {
 		      body: """Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL} for more information.""",
 		      to: "f.walliser@quality-miners.de",
 		      attachLog: true,
-          attachmentsPattern: 'documentation, dependency-check-report.xml, dependency-check-report.xml, dependency-check-report.html, dependency-check-report.json, dependency-check-report.csv, dependency-check-report.sarif, dependency-check-jenkins.html, dependency-check-junit.xml'
+          attachmentsPattern: 'documentation/*, dependency-check-report.xml, dependency-check-report.xml, dependency-check-report.html, dependency-check-report.json, dependency-check-report.csv, dependency-check-report.sarif, dependency-check-jenkins.html, dependency-check-junit.xml'
 			  )
     	}
     }
