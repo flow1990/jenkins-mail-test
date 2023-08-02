@@ -34,8 +34,7 @@ pipeline {
           steps {
               script {
                   // Nehmen Sie an, dass Ihre Compodoc-Dateien im Verzeichnis 'compodoc' liegen
-                  sh "cp -r ${env.COMPODOC_PATH} compodoc"
-                  sh "python -m http.server 8000 --directory compodoc &"
+                  sh "python -m http.server 8000 --directory documentation &"
               }
           }
       }
