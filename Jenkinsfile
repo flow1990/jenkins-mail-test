@@ -14,7 +14,7 @@ pipeline {
         steps {
           sh 'sudo npm install -g @compodoc/compodoc'
           sh 'touch tsconfig.doc.json'
-          sh 'compodoc -p tsconfig.doc.json -s'
+          sh 'compodoc -p tsconfig.doc.json'
         }
       }
   
