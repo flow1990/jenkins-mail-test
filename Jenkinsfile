@@ -14,7 +14,8 @@ pipeline {
         steps {
           sh 'sudo npm install -g @compodoc/compodoc'
           sh 'touch tsconfig.doc.json'
-          sh 'nohup compodoc -p tsconfig.doc.json -s -r 8888 &'
+          //sh 'compodoc -p tsconfig.doc.json -s -r 8888'
+          sh 'compodoc -p tsconfig.doc.json'
         }
       }
   
@@ -35,7 +36,8 @@ pipeline {
     	always {
         emailext (
 		      subject: "Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-		      body: """Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL} for more information.""",
+		      body: """Dependency Check: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL} for more information.
+          Directory: ${PWD}""",
 		      to: "f.walliser@quality-miners.de",
 		      attachLog: true,
           attachmentsPattern: 'dependency-check-report.xml, dependency-check-report.xml, dependency-check-report.html, dependency-check-report.json, dependency-check-report.csv, dependency-check-report.sarif, dependency-check-jenkins.html, dependency-check-junit.xml'
